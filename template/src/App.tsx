@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 declare global {
   interface Window {
-    injectValue: (value: any) => void
+    injectData: DataType
   }
 }
 
@@ -13,11 +13,12 @@ interface DataType {
 
 function App() {
   const [data, setData] = useState<DataType>()
+
   useEffect(() => {
-    window.injectValue = (value: any) => {
-      setData(value)
-    }
-  }, [])
+    setTimeout(() => {
+      setData(window.injectData);
+    }, 300);
+  }, []);
 
   return (
     <div>
