@@ -23,7 +23,7 @@ func printToPDF(urlstr string, res *[]byte, injectData interface{}) chromedp.Tas
 		chromedp.WaitReady("div#root div"),
 		chromedp.Sleep(1 * time.Second),
 		chromedp.ActionFunc(func(ctx context.Context) error {
-			buf, _, err := page.PrintToPDF().WithPrintBackground(false).Do(ctx)
+			buf, _, err := page.PrintToPDF().WithPrintBackground(true).Do(ctx)
 			if err != nil {
 				return err
 			}
