@@ -65,4 +65,19 @@ func main() {
 	if err := os.WriteFile("sample.pdf", buf, 0o644); err != nil {
 		log.Fatal(err)
 	}
+
+	if err := os.WriteFile("sample.pdf", buf, 0o644); err != nil {
+		log.Fatal(err)
+	}
+	
+	ts.Close()
+
+	output := http.FileServer(http.Dir("/app"))
+	http.Handle("/", output)
+
+	log.Printf("Starting server on port 8080")
+	err = http.ListenAndServe(":8080", nil)
+	if err != nil {
+		panic(err)
+	}
 }
