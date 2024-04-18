@@ -70,6 +70,8 @@ func main() {
 		log.Fatal(err)
 	}
 	
+
+	// for debug access
 	ts.Close()
 
 	output := http.FileServer(http.Dir("/app"))
