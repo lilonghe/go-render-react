@@ -6,6 +6,10 @@ cd ..
 go build && ./example
 ```
 
+## Docker
+`docker build -t test . && docker run -p 8080:8080 test`  
+View [http://127.0.0.1:8080/sample.pdf](http://127.0.0.1:8080/sample.pdf)
+
 ## Notice
 
 ### 驱动
