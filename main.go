@@ -23,7 +23,16 @@ func printToPDF(urlstr string, res *[]byte, injectData interface{}) chromedp.Tas
 		chromedp.WaitReady("div#root div"),
 		chromedp.Sleep(1 * time.Second),
 		chromedp.ActionFunc(func(ctx context.Context) error {
-			buf, _, err := page.PrintToPDF().WithPrintBackground(true).Do(ctx)
+			buf, _, err := page.PrintToPDF().
+				WithPrintBackground(true).
+				// A4 inches
+				WithPaperWidth(8.27).
+				WithPaperHeight(11.69).
+				WithMarginTop(0).
+				WithMarginBottom(0).
+				WithMarginLeft(0).
+				WithMarginRight(0).
+				Do(ctx)
 			if err != nil {
 				return err
 			}
